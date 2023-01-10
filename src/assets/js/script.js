@@ -4,7 +4,7 @@ import transitionPage from './utils/transitionPage.js';
 
 class app {
     constructor() {
-       // this.removeSlashUrl()
+        this.removeSlashUrl()
         this.eventListener()
         loadFunction(window.location.pathname)
         this.link = document.querySelectorAll('.menu__link')
