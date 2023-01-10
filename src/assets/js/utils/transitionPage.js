@@ -1,6 +1,6 @@
 import loadFunction from "./functionLoad.js"
 
-export default function transitionPage(url, e) {
+export default function transitionPage(url, target) {
 		const div = {
 			app: document.getElementById('app'),
 			content: document.querySelector('.content'),
@@ -11,7 +11,7 @@ export default function transitionPage(url, e) {
 		xml.addEventListener('load', async function () {
 			if (this.status === 200 && this.readyState === 4) {
 				const dom = new DOMParser().parseFromString(this.response, 'text/html')
-				// window.innerWidth < 992 ? await responsiveLeave() : await leavePage(dom.querySelector('.content'), e)
+				// window.innerWidth < 992 ? await responsiveLeave() : await leavePage(dom.querySelector('.content'), target)
 
 				div.content.remove()
 				div.app.appendChild(dom.querySelector('.content'))
