@@ -1,0 +1,7 @@
+-const navigation = [{url : "/", value : "Accueil"}, {url : "/programme", value : "Programme"}, {url : "/agenda", value : "Agenda"}, {url : "/lieux", value : "Lieux"}, {url : "/artistes", value : "Artistes"}]
+header.menu
+   nav.menu__nav
+     ul.menu__wrapper
+      each indexNav in navigation
+       li.menu__list
+         a.menu__link(href=indexNav.url)=indexNav.value

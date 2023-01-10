@@ -1,0 +1,16 @@
+// global
+@import './base/global';
+@import './base/fonts';
+
+// Mixins
+
+@import './abstracts/mixins';
+@import './abstracts/sizeFonts';
+
+// Components
+
+@import './components/nav';
+@import './components/footer';
+
+// Pages
+@import './pages/home';

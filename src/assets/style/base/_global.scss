@@ -1,0 +1,57 @@
+ body{
+    background-color: #f1f1f1;
+  }
+  ::selection{
+    background-color: rgba(0, 0, 0, 0.421);
+  }
+  ::-webkit-scrollbar{
+    display: none;
+  }
+    html, body, nav, header, footer, span,
+    h1, h2, h3, p,
+    a, img,
+    ul, li,
+    table, form, label, input, textarea, select, button, figure {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    ul, li {
+      list-style: none;
+    }
+    button{
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+    a {
+      text-decoration: none;
+    }
+    img, picture, svg, span, a {
+      display: block;
+    }
+    img{
+      pointer-events: none;
+    }
+    .shrink{
+      flex-shrink: 0;
+    }
+    img, svg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+  .hide{
+    overflow: hidden;
+  }
+  .overflow-x{
+    overflow-x: hidden;
+  }
+  .w-90{
+    width: 90%;
+    margin: 0 auto;
+  }
