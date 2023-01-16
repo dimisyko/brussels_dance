@@ -1,16 +1,13 @@
 // global
-@import './base/global';
-@import './base/fonts';
+@forward './base/global';
+@forward './base/fonts';
 
 // Mixins
-
-@import './abstracts/mixins';
-@import './abstracts/sizeFonts';
+@forward './abstracts/sizeFonts';
 
 // Components
-
-@import './components/nav';
-@import './components/footer';
+@forward './components/nav';
+@forward './components/footer';
 
 // Pages
-@import './pages/home';
+@forward './pages/home';

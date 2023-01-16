@@ -4,14 +4,16 @@ import transitionPage from './utils/transitionPage.js';
 
 class app {
     constructor() {
-        this.removeSlashUrl()
+        // this.removeSlashUrl()
         this.eventListener()
         loadFunction(window.location.pathname)
         this.link = document.querySelectorAll('.menu__link')
         this.currentLink(window.location.pathname)
     }
     removeSlashUrl(){
-        window.history.pushState("", "", window.location.pathname.substring(0, window.location.pathname.length - 1));
+        if(window.location.pathname != "/"){
+            window.history.pushState({}, "", window.location.pathname.substring(0, window.location.pathname.length - 1));
+        }
     }
     currentLink(url) {
         for (let index = 0; index < this.link.length; index++) {
@@ -29,14 +31,17 @@ class app {
 
         if (el) {
             e.preventDefault()
-            window.history.pushState('', '', el.getAttribute('href'))
-            transitionPage(el.getAttribute('href'), el) 
+            window.history.pushState({}, '', el.getAttribute('href'))
+            transitionPage(el.getAttribute('href')) 
             this.currentLink(window.location.pathname)
         }
     }
     eventListener() {
         document.addEventListener('click', this.clk.bind(this))
-        window.addEventListener('popstate', (e) => { window.location.reload() })
+        window.addEventListener('popstate', () => {
+            this.currentLink(window.location.pathname) 
+            transitionPage(window.location.pathname)
+        })
     }    
 }
 new app()

@@ -1,0 +1,9 @@
+@use '../abstracts/mixins' as *;
+
+.home{
+    height: 100vh;
+    &__title{
+        @extend %centerFlex;
+        height: 100%;
+    }
+}
