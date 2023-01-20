@@ -1,9 +1,40 @@
 @use '../abstracts/mixins' as *;
 
 .home{
-    height: 100vh;
+    width: 90%;
+    margin: auto;
+    @include tablet{
+        width: 98%;
+    }
+    &__wrapper-imgs{
+        @include tablet{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    &__img{
+        margin-top: 2rem;
+        @include tablet{
+            width: 49.5%;
+            height: 100vh;
+        }
+    }
     &__title{
-        @extend %centerFlex;
-        height: 100%;
+        text-align: center;
+        @include tablet{
+            font-size: 25vw;
+        }
+    }
+}
+.about{
+    padding: 5rem 0;
+    &__title{
+        width: 42%;
+        margin: 3rem auto 0 auto;
+        text-align: center;
+    }
+    &__edition{
+        width: 35%;
+        margin: 5rem 0 0 auto;
     }
 }

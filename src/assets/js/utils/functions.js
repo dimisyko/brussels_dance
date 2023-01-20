@@ -2,6 +2,10 @@ function ease(start, end, ease){
     return start + (end - start) / ease
 }
 
+function mediaQueries(size){
+    return window.matchMedia(`(${size})`)
+ }
+
 function offsetEl(el){
    const offset = el.getBoundingClientRect()
     return {
@@ -12,11 +16,4 @@ function offsetEl(el){
     }
 }
 
-function cloneEl(el, findEl, className, append) {
-    const findImg = el.querySelector(`.${findEl}`)
-    const clone = findImg.cloneNode(true)
-    clone.className = className
-    append.appendChild(clone)
-}
-
-export{ ease, offsetEl, cloneEl }
+export{ ease, offsetEl, mediaQueries }

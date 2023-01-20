@@ -1,4 +1,4 @@
-import { offsetEl } from "../utils/functions.js"
+import { offsetEl, mediaQueries } from "../utils/functions.js"
 
 export default class parallaxScroll {
     constructor({ el, direction }) {
@@ -10,12 +10,12 @@ export default class parallaxScroll {
     parallax(){
         this.el.forEach(element => {
             this.parallaxScrollY(element)
-            if (window.innerWidth < 992) element.removeAttribute('style')
+            if (mediaQueries("max-width : 992px").matches) element.removeAttribute('style')
         });
     }
     params(el, offset, size){
             this.pos = offset - size / 2;
-            const data = el.getAttribute("data-v");
+            const data = el.dataset.v;
             this.newScroll = data * this.pos
     }
     parallaxScrollY(el){
@@ -25,9 +25,9 @@ export default class parallaxScroll {
     }
     raf() {
         this.parallax()
-        window.innerWidth > 992 ? requestAnimationFrame(this.raf.bind(this)) : cancelAnimationFrame(this.raf.bind(this))
+        mediaQueries("min-width : 992px").matches ? requestAnimationFrame(this.raf.bind(this)) : cancelAnimationFrame(this.raf.bind(this))
     }
     resize() {
-        window.addEventListener('resize', this.raf.bind(this))
+        mediaQueries("max-width : 992px").addEventListener('change', this.raf.bind(this))
     }
 }

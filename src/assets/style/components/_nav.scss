@@ -1,7 +1,36 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors' as *; 
 .menu{
+	padding: 3.5rem 0;
+	&__container {
+		@extend %flex_between;
+	}
+	&__nav{
+		position: relative;
+		.menu-line{
+			position: absolute;
+            bottom: 0;
+            height: 2px;
+            background-color: $orange;
+		}
+	}
+	&__list{
+		display: inline-block;
+		margin-right: 2rem;
+		&:last-child{
+			margin-right: 0;
+		}
+	}
 	&__link{
+		font-family: "Circular";
+		color: black;
+		padding: 0.4rem 0;
+		@include laptop{
+			font-size: 1.25vw; 
+		}
 		&.active-link{
-			color: red;
+			color: $orange;
+			pointer-events: none;
 		}
 	}
 }

@@ -1,6 +1,7 @@
 import '../style/style.scss';
 import loadFunction from "./utils/functionLoad.js"
 import transitionPage from './utils/transitionPage.js';
+import menu from './components/menu.js';
 
 class app {
     constructor() {
@@ -9,6 +10,7 @@ class app {
         loadFunction(window.location.pathname)
         this.link = document.querySelectorAll('.menu__link')
         this.currentLink(window.location.pathname)
+        new menu()
     }
     removeSlashUrl(){
         if(window.location.pathname != "/"){
@@ -34,6 +36,7 @@ class app {
             window.history.pushState({}, '', el.getAttribute('href'))
             transitionPage(el.getAttribute('href')) 
             this.currentLink(window.location.pathname)
+            new menu()
         }
     }
     eventListener() {
