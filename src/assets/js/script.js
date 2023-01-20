@@ -1,16 +1,23 @@
 import '../style/style.scss';
 import loadFunction from "./utils/functionLoad.js"
 import transitionPage from './utils/transitionPage.js';
-import menu from './components/menu.js';
 
 class app {
     constructor() {
         // this.removeSlashUrl()
-        this.eventListener()
         loadFunction(window.location.pathname)
-        this.link = document.querySelectorAll('.menu__link')
+        this.menu = document.querySelector('.menu__nav')
+        this.menuChild = {
+            links : [...this.menu.querySelectorAll('.menu__link')],
+            line :  this.menu.querySelector('.menu-line')
+        }
+        this.eventListener()
+    }
+    navigation(){
         this.currentLink(window.location.pathname)
-        new menu()
+        this.findElActive = this.menuChild.links.find((active) => active.classList.contains("active-link"))
+        this.offsetEl(this.findElActive)
+        this.menuChild.line.style.transition = "0.4s"
     }
     removeSlashUrl(){
         if(window.location.pathname != "/"){
@@ -18,10 +25,15 @@ class app {
         }
     }
     currentLink(url) {
-        for (let index = 0; index < this.link.length; index++) {
-            const href = this.link[index].getAttribute('href').replace(window.location.origin, "")
-            url == href ? this.link[index].classList.add('active-link') : this.link[index].classList.remove('active-link')
+        for (let index = 0; index < this.menuChild.links.length; index++) {
+            const href = this.menuChild.links[index].getAttribute('href').replace(window.location.origin, "")
+            url == href ? this.menuChild.links[index].classList.add('active-link') : this.menuChild.links[index].classList.remove('active-link')
+            this.menuChild.links[index].addEventListener('mouseover', () => this.offsetEl(this.menuChild.links[index]))
         }
+    }
+    offsetEl(el) {
+        this.menuChild.line.style.transform = "translate3d(" + el.offsetLeft + 'px, 0, 0)'
+        this.menuChild.line.style.width = el.offsetWidth + "px"
     }
    clk(e) {
         let el = e.target
@@ -35,15 +47,17 @@ class app {
             e.preventDefault()
             window.history.pushState({}, '', el.getAttribute('href'))
             transitionPage(el.getAttribute('href')) 
-            this.currentLink(window.location.pathname)
-            new menu()
+            this.navigation()
         }
     }
     eventListener() {
+        this.menu.addEventListener('mouseleave', () => this.offsetEl(this.findElActive))
         document.addEventListener('click', this.clk.bind(this))
+        window.addEventListener('load', this.navigation.bind(this))
+        window.addEventListener('resize', () => this.offsetEl(this.findElActive))
         window.addEventListener('popstate', () => {
-            this.currentLink(window.location.pathname) 
             transitionPage(window.location.pathname)
+            this.navigation()
         })
     }    
 }
