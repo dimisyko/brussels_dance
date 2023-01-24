@@ -1,6 +1,5 @@
-
  ::selection{
-    background-color: rgb(255, 255, 38)
+    background-color: #fff5db;
   }
     html, body, nav, header, footer, span,
     h1, h2, h3, p,
@@ -10,6 +9,35 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+    body{
+      background-color:#fff5db;
+      overflow-y: scroll;
+      &.open {
+        overflow-y: hidden;
+        .menu__container {
+          .menu__nav {
+            opacity: 1;
+            pointer-events: all;
+          }
+          .menu-btn {
+            opacity: 1;
+            .line {
+              &:first-child {
+                top: 50%;
+                transform: translateY(-50%) rotate(45deg);
+              }
+              &:nth-child(2) {
+                opacity: 0;
+              }
+              &:last-child {
+                bottom: 50%;
+                transform: translateY(50%) rotate(-45deg);
+              }
+            }
+          }
+        }
+      }
     }
     ul, li {
       list-style: none;

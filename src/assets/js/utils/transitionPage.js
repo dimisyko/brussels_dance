@@ -1,10 +1,8 @@
 import loadFunction from "./functionLoad.js"
 
 export default function transitionPage(url) {
-		const div = {
-			app: document.getElementById('app'),
-			content: document.querySelector('.content'),
-		}
+
+		const content = document.querySelector('.content')
 		document.body.style.overflow = "hidden"
 		document.body.style.pointerEvents = "none"
 		let xml = new XMLHttpRequest()
@@ -12,11 +10,11 @@ export default function transitionPage(url) {
 			if (this.status === 200 && this.readyState === 4) {
 				const dom = new DOMParser().parseFromString(this.response, 'text/html')
 
-				div.content.remove()
-				div.app.appendChild(dom.querySelector('.content'))
-				document.title = dom.title
+				content.remove()
+				app.appendChild(dom.querySelector('.content'))
+				document.title = dom.title	
 				window.scrollTo(0, 0)
-				loadFunction(window.location.pathname)	
+				loadFunction(window.location.pathname)
 			    document.body.removeAttribute('style')
 			} else {
 				window.location.reload()

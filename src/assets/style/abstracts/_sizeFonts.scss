@@ -1,7 +1,7 @@
 @use './colors' as *;
-
-h1, h2, h4, h5, h6{
-  color: $orange;
+@use './mixins' as *;
+h1, h2, h4, h5, h6, #logo{
+  color: $colorTitle;
   font-family: "Mongoose";
   font-weight: lighter;
   text-transform: uppercase;
@@ -10,11 +10,19 @@ h1{
   line-height: 0.85;
 }
 h2{
-  font-size: 8.5vw;
-  line-height: 0.95
+  font-size: 3.5rem;
+  line-height: 0.95;
+  @include phone{
+    font-size: 6rem;
+  }
+  @include tablet{
+    font-size: 7.5vw;
+  }
 }
 p{
   font-family: "Circular";
   line-height: 1.5; 
-  font-size: 1.3vw;
+  @include tablet{
+    font-size: 1.3vw;
+  }
 }

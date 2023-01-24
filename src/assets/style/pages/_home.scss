@@ -2,7 +2,7 @@
 
 .home{
     width: 90%;
-    margin: auto;
+    margin: 12rem auto 0 auto;
     @include tablet{
         width: 98%;
     }
@@ -17,10 +17,15 @@
         @include tablet{
             width: 49.5%;
             height: 100vh;
+            margin-top: 0;
         }
     }
     &__title{
         text-align: center;
+        font-size: 6.5rem;
+        @include phone{
+            font-size: 10rem;   
+        }
         @include tablet{
             font-size: 25vw;
         }
@@ -28,13 +33,17 @@
 }
 .about{
     padding: 5rem 0;
-    &__title{
-        width: 42%;
-        margin: 3rem auto 0 auto;
-        text-align: center;
-    }
     &__edition{
-        width: 35%;
-        margin: 5rem 0 0 auto;
+        margin: 2rem auto;
+        @include tablet{
+            width: 40%;
+            margin: 5rem auto;
+        }
+    }
+    &__title{
+        margin-bottom: 2rem;
+        @include tablet{
+            text-align: center;
+        }
     }
 }

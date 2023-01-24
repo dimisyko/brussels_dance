@@ -4,7 +4,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const folders = [
   'index',
-  'programme/index'
+  'programme/index',
+  'lieux/index'
 ]
 const mapFolders = folders.map(filename => {
   return new HtmlWebpackPlugin({

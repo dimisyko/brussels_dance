@@ -1,15 +1,18 @@
 -const title = "Accueil"
 include ../components/head.pug
-        main.content(data-page="home")
+      main.app#app
+        .content(data-page="home")
           section.home
            h1.home__title Brussels dance
            .home__wrapper-imgs
-             picture.home__img
+             figure.home__img
                img(src=require("../assets/img/brussels_dance2.webp"), alt="brussels dance")
-             picture.home__img
+             figure.home__img
                img(src=require("../assets/img/brussels_dance.webp"), alt="brussels dance")
-          section.about.w-90 
+          section.about.w-90
+            .about__edition 
               h2.about__title La 7ème édition de Brussels dance !
-              .about__edition
-                p.about__paragraph Elle aura lieu du 03 mars au 30 avril 2023 et réunira pas moins de 18 lieux culturels bicommunautaires. Afin d’inviter les spectateur.rices à voyager d’un lieu culturel à l’autre, 5 parcours thématiques ont été imaginés au sein de la programmation 2023. Une danse qui nous interroge (Danse et engagement), une danse qui nous lie (danse et relation), une danse qui nous fait rire (danse et humour), une danse à écouter (danse et musique) seront les maîtres mots de cette 7ème édition.
-                a(href="/programme") Découvrir
+              p.about__paragraph Elle aura lieu du 03 mars au 30 avril 2023 et réunira pas moins de 18 lieux culturels bicommunautaires. Afin d’inviter les spectateur.rices à voyager d’un lieu culturel à l’autre, 5 parcours thématiques ont été imaginés au sein de la programmation 2023. Une danse qui nous interroge (Danse et engagement), une danse qui nous lie (danse et relation), une danse qui nous fait rire (danse et humour), une danse à écouter (danse et musique) seront les maîtres mots de cette 7ème édition.
+              a(href="/programme") Découvrir
+
+      include ../components/footer.pug

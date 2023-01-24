@@ -14,15 +14,15 @@
   left: $left;
   transform: translate3d($x, $y, 0);
 }
-@mixin after($top, $left) {
-  content: "";
+@mixin after($content, $top, $left) {
+  content: $content;
   position: absolute;
   top: $top;
   left: $left;
 }
 @mixin lineAfter($h, $speed){
   &::before{
-    @include after(100%, 0);
+    @include after("", 100%, 0);
   background-color: #F92E2D;
   width: 100%;
   height: $h;

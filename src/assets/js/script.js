@@ -1,23 +1,29 @@
 import '../style/style.scss';
 import loadFunction from "./utils/functionLoad.js"
 import transitionPage from './utils/transitionPage.js';
+import { mediaQueries } from './utils/functions.js'
 
 class app {
     constructor() {
-        // this.removeSlashUrl()
+        //this.removeSlashUrl()
         loadFunction(window.location.pathname)
-        this.menu = document.querySelector('.menu__nav')
+        this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
             links : [...this.menu.querySelectorAll('.menu__link')],
-            line :  this.menu.querySelector('.menu-line')
+            line :  this.menu.querySelector('.menu-line'),
+            btnMenu : document.querySelector('.menu-btn')
         }
         this.eventListener()
+    }
+    toggle(){
+        document.body.classList.toggle('open')
     }
     navigation(){
         this.currentLink(window.location.pathname)
         this.findElActive = this.menuChild.links.find((active) => active.classList.contains("active-link"))
         this.offsetEl(this.findElActive)
         this.menuChild.line.style.transition = "0.4s"
+        document.body.classList.remove('open')
     }
     removeSlashUrl(){
         if(window.location.pathname != "/"){
@@ -32,7 +38,8 @@ class app {
         }
     }
     offsetEl(el) {
-        this.menuChild.line.style.transform = "translate3d(" + el.offsetLeft + 'px, 0, 0)'
+        const responsiveMenu = mediaQueries("max-width : 992px").matches ? "0,"+el.offsetTop+"px, 0" : el.offsetLeft+"px, 0, 0"
+        this.menuChild.line.style.transform =  "translate3d("+responsiveMenu+")"
         this.menuChild.line.style.width = el.offsetWidth + "px"
     }
    clk(e) {
@@ -51,6 +58,7 @@ class app {
         }
     }
     eventListener() {
+        this.menuChild.btnMenu.addEventListener('click', this.toggle.bind(this))
         this.menu.addEventListener('mouseleave', () => this.offsetEl(this.findElActive))
         document.addEventListener('click', this.clk.bind(this))
         window.addEventListener('load', this.navigation.bind(this))

@@ -1,0 +1,50 @@
+@use '../abstracts/mixins' as *;
+
+.places {
+	height: 100vh;
+	overflow: hidden;
+	&__container {
+		display: flex;
+		height: 100%;
+		transition: 1.5s cubic-bezier(0.3, -0.01, 0.09, 1.01);
+        @include tablet{
+            padding-left: 25vw;
+        }
+	}
+	&__item {
+		@extend %centerFlex;
+		width: 100%;
+		flex-shrink: 0;
+        white-space: nowrap;
+        @include tablet{
+            width: 50vw;  
+        }
+        &.active{
+            h2 {
+               transform: scale(2);
+            }
+        }
+		h2 {
+            transform: scale(1);
+            transition: 1.5s cubic-bezier(0.3, -0.01, 0.09, 1.01)
+		}
+	}
+    .info{
+        @include centerAbs(fixed, 90%, 50%, -50%, 0);
+        @extend %flex_between;
+        width: 90%;
+        .nbr {
+            font-family: 'Circular';
+            font-size: 1.5rem;
+            display: flex;
+            .nbr-container {
+                max-height: 2rem;
+                overflow: hidden;
+                .nbr-wrapper {
+                    transition: 0.7s;
+                }
+            }
+        }
+    }
+
+}
