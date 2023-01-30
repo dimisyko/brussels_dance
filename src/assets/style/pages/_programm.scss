@@ -1,0 +1,73 @@
+@use '../abstracts/mixins' as *;
+.programm-page{
+    margin-top: 12%;
+    &__item{
+        background-color: rgb(254, 248, 230);
+        margin-bottom: 3rem;
+        @include tablet{
+            height: 250vh;
+            margin-bottom: -150vh;
+            will-change: transform, opacity;
+            &:last-child{
+                margin-bottom: 0; 
+                height: 100%
+            }
+        }
+        &:nth-child(odd){
+            .programm-page__item-wrapper{
+                flex-direction: row-reverse;
+            }  
+        }
+    } 
+   &__info{
+    h2{
+        margin: 2rem 0;
+        @include tablet{
+            margin: 0 0 1.2rem 0;
+        }
+    }
+    @include tablet{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        width: 45%;
+        height: 80%;
+    }
+   }
+   &__info-footer{
+    margin-top: 2rem;
+    @extend %flex_between;
+    h4{
+        margin: 0;
+        font-weight: lighter;
+    }
+    @include tablet{
+        margin-top: 0
+    }
+   }
+   &__item-wrapper{
+    padding: 0 5%;
+    @include tablet{
+        position: sticky;
+        top: 0;
+        padding: 4rem 5%;
+        display: flex;
+        justify-content: space-between;
+        height: 100vh;
+    }
+   }
+    &__img{
+        height: 40%;
+        border-radius: 15px;
+        @include tablet{
+            width: 45vw;
+            height: 80%;
+        }
+    }
+    &__title{
+        margin-bottom: 3rem;
+          @include tablet{
+            font-size: 13vw;
+          }
+    }
+}

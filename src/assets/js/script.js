@@ -5,7 +5,6 @@ import { mediaQueries } from './utils/functions.js'
 
 class app {
     constructor() {
-        //this.removeSlashUrl()
         loadFunction(window.location.pathname)
         this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
@@ -25,11 +24,6 @@ class app {
         this.menuChild.line.style.transition = "0.4s"
         document.body.classList.remove('open')
     }
-    removeSlashUrl(){
-        if(window.location.pathname != "/"){
-            window.history.pushState({}, "", window.location.pathname.substring(0, window.location.pathname.length - 1));
-        }
-    }
     currentLink(url) {
         for (let index = 0; index < this.menuChild.links.length; index++) {
             const href = this.menuChild.links[index].getAttribute('href').replace(window.location.origin, "")
@@ -41,6 +35,7 @@ class app {
         const responsiveMenu = mediaQueries("max-width : 992px").matches ? "0,"+el.offsetTop+"px, 0" : el.offsetLeft+"px, 0, 0"
         this.menuChild.line.style.transform =  "translate3d("+responsiveMenu+")"
         this.menuChild.line.style.width = el.offsetWidth + "px"
+        this.menuChild.line.style.height = el.offsetHeight + "px"
     }
    clk(e) {
         let el = e.target

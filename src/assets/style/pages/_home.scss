@@ -14,36 +14,110 @@
     }
     &__img{
         margin-top: 2rem;
+        border-radius: 15px;
         @include tablet{
             width: 49.5%;
-            height: 100vh;
+            height: 90vh;
             margin-top: 0;
         }
     }
     &__title{
         text-align: center;
-        font-size: 6.5rem;
-        @include phone{
-            font-size: 10rem;   
-        }
         @include tablet{
             font-size: 25vw;
         }
     }
 }
 .about{
-    padding: 5rem 0;
+    padding: 8rem 0;
     &__edition{
         margin: 2rem auto;
         @include tablet{
-            width: 40%;
+            display: flex;
+            justify-content: space-between;
             margin: 5rem auto;
         }
     }
     &__title{
         margin-bottom: 2rem;
         @include tablet{
-            text-align: center;
+            width: 50%;
+        }
+    }
+   &__container-paragraph{
+    @include tablet{
+        width: 47%;
+    }
+   }
+    &__paragraph{
+        &:last-child{
+            margin-top: 2rem;
+        }
+        @include tablet{
+            &:last-child{
+                columns: 2;
+                column-gap: 2.5rem;
+            }
+        }
+    }
+}
+.programm{
+    margin: 5rem 0;
+    &__container{
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        column-gap: 2rem;
+    }
+    &__item{
+        &:first-child{
+            grid-area: 1 / 1 / 5 / 4;
+        }
+        &:nth-child(2){
+            grid-area: 2 / 4 / 4 / 8;
+        }
+        &:nth-child(3){
+            grid-area: 5 / 4 / 9 / 7;
+        }
+        &:last-child{
+            grid-area: 5 / 7 / 9 / 10;
+        }
+    }
+    &__img{
+        border-radius: 15px;
+    }
+   
+}
+.gallery{
+    margin: 5rem 0;
+    &__container{
+        display: flex;
+        overflow-x: hidden;
+    }
+    &__wrapper{
+        display: flex;
+        flex-shrink: 0;
+        width: 300%;
+        padding: 3rem 0;
+        @include tablet{
+            width: 180%;
+        }
+    }
+    &__title{
+        margin-bottom: 5rem;
+    }
+    &__item{
+        margin: 0 1.5rem;
+        border-radius: 15px;
+        width: 100%;
+        &.odd{
+            transform: rotate(-5deg);
+        }
+        &.even{
+            transform: rotate(5deg);
+        }
+        @include tablet{
+            margin: 0 3rem;
         }
     }
 }

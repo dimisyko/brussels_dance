@@ -5,10 +5,8 @@
 	position: fixed;
     top: 0;
     width: 100%;
-	background: #fff5db68;
 	backdrop-filter: blur(7px);
-	border-bottom: 1px solid rgba(0,0,0,.1);
-	z-index: 2;
+	z-index: 5;
 	&__container {
 		@extend %flex_between;
 		@media (max-width: 992px){
@@ -68,13 +66,12 @@
 		}
 		.menu-line {
 			position: absolute;
-			bottom: 0;
 			border: 1px solid $colorTitle;
 			pointer-events: none;
 		}
 	}
 	&__list {
-		padding: 1rem 0;
+		padding: 0.8rem 0;
 		@include phone{
 			padding: 1.2rem 0;	
 		}
@@ -90,9 +87,9 @@
 	}
 	&__link {
 		position: relative;
-		font-family: 'Circular';
+		line-height: 1; 
 		color: black;
-		margin: 0.6rem 0.8rem;
+		padding: 0.6rem 0.8rem;
 		transition: color 0.2s;
 		font-size: 1.7rem;
 		&::after{

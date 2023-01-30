@@ -5,12 +5,24 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const folders = [
   'index',
   'programme/index',
-  'lieux/index'
+  'artistes/index',
+  'contact/index'
 ]
 const mapFolders = folders.map(filename => {
   return new HtmlWebpackPlugin({
     template: path.resolve(__dirname, `./src/views/${filename}.pug`),
-      filename: `${filename}.html`
+      filename: `${filename}.html`,
+      meta : {
+        'og:title': { property: 'og:title', content: 'Brussels Dance' },
+        'og:description': { property: 'og:description', content: "Refonte de l'identité graphique et du site web du festival Brussels Dance" },
+        'og:type': { property: 'og:type', content: 'website' },
+        'og:url': { property: 'og:url', content: 'https://brussels-dance.netlify.app/' },
+        'og:image': { property: 'og:image', content: 'https://brussels-dance.netlify.app/assets/img/card_meta.jpg' },
+        'twitter:card': { name: 'twitter:card', content: 'summary_large_image' },
+        'twitter:title': { name: 'twitter:title', content: 'Brussels Dance' },
+        'twitter:description': { name: 'twitter:description', content: "Refonte de l'identité graphique et du site web du festival Brussels Dance" },
+        'twitter:image': { name: 'twitter:image', content: 'https://brussels-dance.netlify.app/assets/img/card_meta.jpg' }
+      }
   })
 })
 
@@ -20,7 +32,7 @@ entry: './src/assets/js/script.js',
 output: {
   filename: 'assets/js/script.js',
   path: path.resolve(__dirname, 'dist'),
-  // publicPath: ''
+  //publicPath: ''
 },
 devServer: {
   static: {
@@ -58,10 +70,10 @@ devServer: {
             }
           },
           {
-            test: /\.(jpg|png|gif|webp|svg)$/,
+            test: /\.(jpg|png|gif|webp|svg|ico)$/,
             type: 'asset/resource',
             generator: {
-              filename: 'img/[contenthash:5][ext]'
+              filename: 'assets/img/[name][ext]'
             }
           },
           {
@@ -94,6 +106,6 @@ devServer: {
       plugins: [
         new MiniCssExtractPlugin({
           filename: 'assets/style/style.css'
-      })
+      }),
       ].concat(mapFolders)
 };

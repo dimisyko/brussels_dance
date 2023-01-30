@@ -1,18 +1,40 @@
 -const title = "Accueil"
+-const gallery = [{alt : "festival 2021",img : "festival1.webp"},{alt : "festival 2020",img :"festival2.webp"}, {alt : "festival 2019",img :"festival3.webp"}, {alt : "festival 2020",img :"festival4.webp"}]
+-const partner = [{alt : "festival 2021",img : "festival1.webp"},{alt : "festival 2020",img :"festival2.webp"}, {alt : "festival 2019",img :"festival3.webp"}, {alt : "festival 2020",img :"festival4.webp"}]
 include ../components/head.pug
       main.app#app
-        .content(data-page="home")
+        .content
+          .bg-black
           section.home
            h1.home__title Brussels dance
            .home__wrapper-imgs
-             figure.home__img
+             figure.home__img.hide
                img(src=require("../assets/img/brussels_dance2.webp"), alt="brussels dance")
-             figure.home__img
+             figure.home__img.hide
                img(src=require("../assets/img/brussels_dance.webp"), alt="brussels dance")
           section.about.w-90
             .about__edition 
               h2.about__title La 7ème édition de Brussels dance !
-              p.about__paragraph Elle aura lieu du 03 mars au 30 avril 2023 et réunira pas moins de 18 lieux culturels bicommunautaires. Afin d’inviter les spectateur.rices à voyager d’un lieu culturel à l’autre, 5 parcours thématiques ont été imaginés au sein de la programmation 2023. Une danse qui nous interroge (Danse et engagement), une danse qui nous lie (danse et relation), une danse qui nous fait rire (danse et humour), une danse à écouter (danse et musique) seront les maîtres mots de cette 7ème édition.
-              a(href="/programme") Découvrir
-
+              .about__container-paragraph
+                 p.about__paragraph Elle aura lieu du 03 mars au 30 avril 2022 et réunira pas moins de 18 lieux culturels bicommunautaires. Afin d’inviter les spectateur.rices à voyager d’un lieu culturel à l’autre, 5 parcours thématiques ont été imaginés au sein de la programmation 2023.
+                 p.about__paragraph Une danse qui nous interroge (Danse et engagement), une danse qui nous lie (danse et relation), une danse qui nous fait rire (danse et humour), une danse à écouter (danse et musique) seront les maîtres mots de cette 7ème édition. Au-delà de la programmation, une exposition à ciel ouvert élaborée en collaboration avec Lise Bruyneel (La fabrique des regards) sera inaugurée lors de l’événement.
+          section.programm
+            .programm__container.w-90
+              figure.programm__item.programm__img.hide
+                      img(src=require(`../assets/img/programme1.webp`), alt="Ayelen Parolin")
+              .programm__item
+                h2 Découvrez le programme 2022
+                a(href="/programme") Voir plus
+              figure.programm__item.programm__img.hide
+                      img(src=require(`../assets/img/programme5.webp`), alt="Protéiforme + B++++")
+              figure.programm__item.programm__img.hide
+                      img(src=require(`../assets/img/programme2.webp`), alt="Golem")
+          section.gallery
+              h2.gallery__title.w-90 Quelques photos du festival
+              .gallery__container
+                -for(let i = 0; i<2; i++)
+                 .gallery__wrapper
+                  each item, i in gallery
+                   figure.gallery__item(class=`${i % 2 == 0 ? `even` : `odd`}`).hide
+                      img(src=require(`../assets/img/${item.img}`), alt=item.alt)
       include ../components/footer.pug

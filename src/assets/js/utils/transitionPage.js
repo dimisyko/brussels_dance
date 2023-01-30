@@ -1,7 +1,8 @@
 import loadFunction from "./functionLoad.js"
+import { leavePage, enterPage } from "../components/tlTransition.js"
 
 export default function transitionPage(url) {
-
+		leavePage()
 		const content = document.querySelector('.content')
 		document.body.style.overflow = "hidden"
 		document.body.style.pointerEvents = "none"
@@ -9,13 +10,17 @@ export default function transitionPage(url) {
 		xml.addEventListener('load', function () {
 			if (this.status === 200 && this.readyState === 4) {
 				const dom = new DOMParser().parseFromString(this.response, 'text/html')
-
-				content.remove()
+				window.scrollTo({
+					top : 0,
+					behavior : "smooth"
+				})
+				enterPage(dom.querySelector('.content')).then(() =>{
+					content.remove()
+					document.body.removeAttribute('style')
+				})
 				app.appendChild(dom.querySelector('.content'))
 				document.title = dom.title	
-				window.scrollTo(0, 0)
 				loadFunction(window.location.pathname)
-			    document.body.removeAttribute('style')
 			} else {
 				window.location.reload()
 			}

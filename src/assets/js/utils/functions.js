@@ -1,11 +1,17 @@
 function ease(start, end, ease){
     return start + (end - start) / ease
 }
-
+function promiseTl(n) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve()
+        }, n)
+    })
+}
 function mediaQueries(size){
     return window.matchMedia(`(${size})`)
  }
-
+ 
 function animationFixe(elTop, heightParent, boo){
     const topEl = window.pageYOffset - elTop.offsetTop
     const calcVh = (topEl <= 0 ? 0 : topEl) / (heightParent - (boo ? window.innerHeight : false))
@@ -22,4 +28,4 @@ function offsetEl(el){
     }
 }
 
-export{ ease, offsetEl, mediaQueries, animationFixe }
+export{ ease, offsetEl, mediaQueries, animationFixe, promiseTl }

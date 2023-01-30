@@ -1,3 +1,17 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors' as *;
+
 footer{
-    
+    background-color: $colorBg;
+    .footer__container{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        padding: 4rem 0;
+        .footer__item{
+            h4{
+                margin: 0;
+            }
+        }
+    }
 }
