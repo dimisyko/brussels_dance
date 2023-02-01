@@ -1,5 +1,5 @@
 import loadFunction from "./functionLoad.js"
-import { leavePage, enterPage } from "../components/tlTransition.js"
+import { leavePage, enterPage } from "../tlTransitions/timeLine.js"
 
 export default function transitionPage(url) {
 		leavePage()

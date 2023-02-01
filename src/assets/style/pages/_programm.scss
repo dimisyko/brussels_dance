@@ -1,9 +1,12 @@
 @use '../abstracts/mixins' as *;
+@use '../abstracts/colors' as *;
 .programm-page{
-    margin-top: 12%;
+    &__title{
+      color: $colorTitle;
+    }
     &__item{
         background-color: rgb(254, 248, 230);
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         @include tablet{
             height: 250vh;
             margin-bottom: -150vh;
@@ -21,6 +24,7 @@
     } 
    &__info{
     h2{
+        color: $colorTitle;
         margin: 2rem 0;
         @include tablet{
             margin: 0 0 1.2rem 0;
@@ -46,11 +50,10 @@
     }
    }
    &__item-wrapper{
-    padding: 0 5%;
+    padding: 4rem 5%;
     @include tablet{
         position: sticky;
         top: 0;
-        padding: 4rem 5%;
         display: flex;
         justify-content: space-between;
         height: 100vh;
@@ -65,8 +68,10 @@
         }
     }
     &__title{
-        margin-bottom: 3rem;
+        position: relative;
+        margin-bottom: 1.8rem;
           @include tablet{
+            @include arrowTitle;
             font-size: 13vw;
           }
     }

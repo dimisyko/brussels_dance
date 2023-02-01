@@ -1,3 +1,4 @@
+ @use "../abstracts/mixins" as *;
  ::selection{
     background-color: #fff5db;
   }
@@ -12,6 +13,11 @@
     }
     .content{
       background-color:rgb(254, 248, 230);
+      background-image: url(../img/bg.png);
+    }
+    .link{
+      font-size: 1.2rem;
+      color: white;
     }
     .bg-black{
       position: fixed;
@@ -19,7 +25,27 @@
       height: 100vh;
       width: 100%;
       opacity: 0;
+      z-index: -1;
       background-color: #000000d8;
+    }
+    .sect-mg-top{
+      margin-top: 8rem;
+      @include phone{
+          margin-top: 10rem;
+      }
+      @include tablet{
+          margin-top: 18%;
+      }
+    }
+    .mg-top{
+      padding-top: 10em;
+      .arrow-title{
+        width: fit-content;
+        margin-left: 5%;
+      }
+      @include phone{
+        padding-top: 12em;
+      }
     }
     body{
       background-color:rgb(254, 248, 230);
@@ -64,8 +90,15 @@
     a {
       text-decoration: none;
     }
-    img, picture, svg, span, a {
-      display: block;
+    .split-js-parent, .split-js-child{
+      display: inline-block;
+    }
+    .split-js-child{
+      transform: translate(0, 100%);
+      transition: transform 0.7s ease;
+    }
+    img, picture, span, svg, a {
+      display: block
     }
     img{
       pointer-events: none;

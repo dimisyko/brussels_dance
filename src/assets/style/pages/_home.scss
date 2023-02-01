@@ -1,13 +1,18 @@
 @use '../abstracts/mixins' as *;
-
+@use '../abstracts/colors' as *;
 .home{
     width: 90%;
-    margin: 12rem auto 0 auto;
+    margin: 0 auto;
+    padding-top: 10em;
+    @include phone{
+        padding-top: 12em;
+    }
     @include tablet{
         width: 98%;
     }
     &__wrapper-imgs{
         @include tablet{
+            margin-top: -2.5rem;
             display: flex;
             justify-content: space-between;
         }
@@ -22,6 +27,7 @@
         }
     }
     &__title{
+        color: $colorTitle;
         text-align: center;
         @include tablet{
             font-size: 25vw;
@@ -29,16 +35,14 @@
     }
 }
 .about{
-    padding: 8rem 0;
     &__edition{
-        margin: 2rem auto;
         @include tablet{
             display: flex;
             justify-content: space-between;
-            margin: 5rem auto;
         }
     }
     &__title{
+        color: $colorTitle;
         margin-bottom: 2rem;
         @include tablet{
             width: 50%;
@@ -62,62 +66,125 @@
     }
 }
 .programm{
-    margin: 5rem 0;
-    &__container{
-        display: grid;
-        grid-template-columns: repeat(9, 1fr);
-        grid-template-rows: repeat(8, 1fr);
-        column-gap: 2rem;
+    &__link{
+        position: relative;
+        width: fit-content;
+        @include lineAfter(1px, 0.5s, white, 1, 0, left, right);
     }
+    &__container{
+        background-color: $colorTitle;
+        @include tablet{
+            display: flex;
+            height: 100vh;
+        }
+    }
+    &__title, &__paragraph{
+        margin-bottom: 2rem;
+    }
+    &__txt{
+        color: white;
+        width: 90%;
+        margin: auto;
+        padding: 4rem 0;
+        @include phone{
+            padding: 6rem 0;
+        }
+        @include tablet{
+            width: 40%;
+            padding: 0
+        }
+    }
+    &__img{
+        height: 60vh;
+        @include phone{
+            height: 50vh;    
+        }
+        @include tablet{
+            width: 48%;
+            height: 100%; 
+        }
+    }
+   
+}
+.artistes{
     &__item{
-        &:first-child{
-            grid-area: 1 / 1 / 5 / 4;
+        margin: 3rem 0;
+        h2{
+            color: $colorTitle;
         }
-        &:nth-child(2){
-            grid-area: 2 / 4 / 4 / 8;
-        }
-        &:nth-child(3){
-            grid-area: 5 / 4 / 9 / 7;
-        }
-        &:last-child{
-            grid-area: 5 / 7 / 9 / 10;
+        a{
+            position: relative;
+            font-size: 1.2rem;
+            color: black;
+            width: fit-content;
+            @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
         }
     }
     &__img{
         border-radius: 15px;
     }
-   
+    @include tablet{
+        &__grid{
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            grid-template-rows: repeat(6, 1fr);
+            gap: 20px;
+        }
+        &__item{
+            margin: 0;
+            &:first-child{
+                grid-area: 1/3/3/1;
+            }
+            &:nth-child(2){
+                grid-area: 1/7/3/5;
+            }
+            &:nth-child(3){
+                grid-area: 3/3/5/1;
+            }
+            &:nth-child(4){
+                grid-area: 7/5/5/3;
+            }
+            &:nth-child(5){
+                grid-area: 3/5/5/7;
+            }
+        }
+    }
+
 }
-.gallery{
-    margin: 5rem 0;
+.partners{
     &__container{
         display: flex;
         overflow-x: hidden;
+        padding: 3rem 0 5rem 0;
+        width: 100vw;
+        @include tablet{
+            padding: 5rem 0 8rem 0;
+        }
     }
     &__wrapper{
         display: flex;
-        flex-shrink: 0;
-        width: 300%;
-        padding: 3rem 0;
+        border-top: 1px solid $colorTitle;
+        border-bottom: 1px solid $colorTitle;
+    }
+    &__list{
+        display: flex;
+        align-items: center;
+        border-right: 1px solid $colorTitle;
+        padding: 3rem;
         @include tablet{
-            width: 180%;
+            padding: 3vw;
         }
     }
     &__title{
-        margin-bottom: 5rem;
+        color: $colorTitle;
     }
     &__item{
-        margin: 0 1.5rem;
-        border-radius: 15px;
-        width: 100%;
-        &.odd{
-            transform: rotate(-5deg);
-        }
-        &.even{
-            transform: rotate(5deg);
+        width: 20vw;
+        @include phone{
+            width: 15vw;
         }
         @include tablet{
-            margin: 0 3rem;
+            width: 8vw;
         }
     }
 }

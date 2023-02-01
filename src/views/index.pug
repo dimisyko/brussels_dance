@@ -1,6 +1,6 @@
 -const title = "Accueil"
--const gallery = [{alt : "festival 2021",img : "festival1.webp"},{alt : "festival 2020",img :"festival2.webp"}, {alt : "festival 2019",img :"festival3.webp"}, {alt : "festival 2020",img :"festival4.webp"}]
--const partner = [{alt : "festival 2021",img : "festival1.webp"},{alt : "festival 2020",img :"festival2.webp"}, {alt : "festival 2019",img :"festival3.webp"}, {alt : "festival 2020",img :"festival4.webp"}]
+-const artistes = [{alt : "festival 2021",img : "portrait1.webp"},{alt : "festival 2020",img :"portrait2.webp"}, {alt : "festival 2019",img :"portrait3.webp"}, {alt : "festival 2020",img :"portrait4.webp"}]
+-const partners = [{alt : "festival 2021",img : "logo-bruxelles-ville.png"},{alt : "festival 2020",img :"logo1.png"}, {alt : "festival 2019",img :"logo2.png"}, {alt : "festival 2020",img :"logo3.png"},  {alt : "festival 2019",img :"logo4.png"}, {alt : "festival 2020",img :"logo5.png"}, {alt : "festival 2020",img :"logo6.png"}, {alt : "festival 2020",img :"logo7.png"}]
 include ../components/head.pug
       main.app#app
         .content
@@ -9,32 +9,38 @@ include ../components/head.pug
            h1.home__title Brussels dance
            .home__wrapper-imgs
              figure.home__img.hide
-               img(src=require("../assets/img/brussels_dance2.webp"), alt="brussels dance")
-             figure.home__img.hide
                img(src=require("../assets/img/brussels_dance.webp"), alt="brussels dance")
+             figure.home__img.hide
+               img(src=require("../assets/img/brussels_dance2.webp"), alt="brussels dance")
           section.about.w-90
-            .about__edition 
+            .about__edition.sect-mg-top
               h2.about__title La 7ème édition de Brussels dance !
               .about__container-paragraph
-                 p.about__paragraph Elle aura lieu du 03 mars au 30 avril 2022 et réunira pas moins de 18 lieux culturels bicommunautaires. Afin d’inviter les spectateur.rices à voyager d’un lieu culturel à l’autre, 5 parcours thématiques ont été imaginés au sein de la programmation 2023.
+                 p.about__paragraph Elle aura lieu du 03 mars au 30 avril 2022 et réunira pas moins de 18 lieux culturels bicommunautaires. Afin d’inviter les spectateur.rices à voyager d’un lieu culturel à l’autre, 5 parcours thématiques ont été imaginés au sein de la programmation 2022.
                  p.about__paragraph Une danse qui nous interroge (Danse et engagement), une danse qui nous lie (danse et relation), une danse qui nous fait rire (danse et humour), une danse à écouter (danse et musique) seront les maîtres mots de cette 7ème édition. Au-delà de la programmation, une exposition à ciel ouvert élaborée en collaboration avec Lise Bruyneel (La fabrique des regards) sera inaugurée lors de l’événement.
-          section.programm
-            .programm__container.w-90
-              figure.programm__item.programm__img.hide
-                      img(src=require(`../assets/img/programme1.webp`), alt="Ayelen Parolin")
-              .programm__item
-                h2 Découvrez le programme 2022
-                a(href="/programme") Voir plus
-              figure.programm__item.programm__img.hide
-                      img(src=require(`../assets/img/programme5.webp`), alt="Protéiforme + B++++")
-              figure.programm__item.programm__img.hide
-                      img(src=require(`../assets/img/programme2.webp`), alt="Golem")
-          section.gallery
-              h2.gallery__title.w-90 Quelques photos du festival
-              .gallery__container
+          section.programm.sect-mg-top
+            .programm__container
+              figure.programm__item.programm__img
+                      img(src=require(`../assets/img/brussels_dance3.webp`), alt="programme 2022")
+              .programm__txt
+                h2.programm__title Découvrez le programme 2022
+                p.programm__paragraph Cette année plusieurs lieux culturels bicommunautaires — Le 140, le Théâtre la Balsamine, La Bellone, le Beursschouwburg, Bozar, Les Brigittines, Charleroi danse, Contredanse, Les Halles de Schaerbeek, Le Centre culturel Jacques Franck — mettent en commun leur programmation autour de la danse sous le label Brussels, dance ! pour assurer une plus grande visibilité aux artistes de la danse aujourd’hui, qu’il est plus que jamais nécessaire de soutenir.
+                a.programm__link.link(href="/programme") Découvrir
+          section.artistes.sect-mg-top
+              .artistes__grid.w-90
+                .artistes__item
+                  h2 Découvrez les artistes
+                  a(href="/artistes") Découvrir
+                each artiste in artistes
+                 figure.artistes__item.artistes__img.hide
+                       img(src=require(`../assets/img/${artiste.img}`), alt=artiste.alt)
+          section.partners.sect-mg-top
+              h2.partners__title.w-90 Nos partenaires
+              .partners__container
                 -for(let i = 0; i<2; i++)
-                 .gallery__wrapper
-                  each item, i in gallery
-                   figure.gallery__item(class=`${i % 2 == 0 ? `even` : `odd`}`).hide
-                      img(src=require(`../assets/img/${item.img}`), alt=item.alt)
+                 ul.partners__wrapper
+                  each item, i in partners
+                   li.partners__list
+                     figure.partners__item
+                       img(src=require(`../assets/img/${item.img}`), alt=item.alt)
       include ../components/footer.pug

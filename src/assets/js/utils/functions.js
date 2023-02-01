@@ -1,11 +1,11 @@
 function ease(start, end, ease){
     return start + (end - start) / ease
 }
-function promiseTl(n) {
+function promiseTl(time) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve()
-        }, n)
+        }, time)
     })
 }
 function mediaQueries(size){

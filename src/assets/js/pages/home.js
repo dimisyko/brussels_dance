@@ -1,7 +1,13 @@
 import { mediaQueries } from "../utils/functions.js"
-export default class home {
+import splitWord from "../libs/splitTxt.js"
+export default class home extends splitWord {
     constructor() {
-        this.el = document.querySelectorAll('.gallery__wrapper')
+        super({
+            el : document.querySelector('.home__title'),
+            classNameParent : "split-js-parent hide",
+            classNameChild : "split-js-child"
+        })
+        this.el = document.querySelectorAll('.partners__wrapper')
         this.init = {
             incre : 0,
             direction : 0
@@ -23,11 +29,11 @@ export default class home {
         this.raf()
         requestAnimationFrame(this.marquee.bind(this))
     }
-    speedMarquee(speed){
+    directionMarquee(speed){
         Math.sign(this.direction) == 1 ? this.init.incre+=speed : this.init.incre-=speed
     }
     raf(){
-        mediaQueries('max-width:992px').matches ? this.speedMarquee(1) : this.speedMarquee(2.5)
+        mediaQueries('max-width:992px').matches ? this.directionMarquee(1) : this.directionMarquee(2)
         this.el[0].style.transform = "translate3d("+this.init.incre+"px, 0, 0)"
         this.el[1].style.transform = "translate3d("+this.init.incre+"px, 0, 0)"
     }

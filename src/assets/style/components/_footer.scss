@@ -1,17 +1,67 @@
 @use '../abstracts/mixins' as *;
 @use '../abstracts/colors' as *;
 
-footer{
-    background-color: $colorBg;
-    .footer__container{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, 1fr);
-        padding: 4rem 0;
-        .footer__item{
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: -1;
+    background-color: $colorTitle;
+        &__item{
+            margin: 2.2rem 0;
+            @include phone{
+                margin: 0
+            }
             h4{
-                margin: 0;
+                position: relative;
+                margin: 0 0 1rem 0;
+                padding-bottom: 0.4rem;
+                color: white;
+                &::after{
+                    @include after("", 100%, 0);
+                    width: 40px;
+                    height: 1px;
+                    background-color: white;
+                }
+            }
+            .line-hover{
+                position: relative;
+                width: fit-content;
+                @include lineAfter(1px, 0.5s, white, 1, 0, left, right);
+
             }
         }
-    }
+        &__wrapper{
+            padding: 7rem 0 1.8rem 0;
+            @include phone{
+                display: flex;
+                justify-content: space-between;
+                padding: 5rem 0 8rem 0;
+            }
+        }
+        &__socials{
+                display: inline-block;
+                margin-right: 1.5rem;
+        } 
+        &__socials-icon{
+            width: 20px;
+            aspect-ratio: 1/1;
+            path{
+                transition: 0.4s;
+            }
+            &:hover{
+                path{
+                    fill: black;
+                }
+        }
+        }
+        &__bottom{
+            border-top: 1px solid white;
+            color: white;
+            padding: 2rem 0;
+            @include phone{
+                display: flex;
+                justify-content: space-between;
+            }
+        }
 }

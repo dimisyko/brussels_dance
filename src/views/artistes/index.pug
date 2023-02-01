@@ -4,23 +4,24 @@ include ../../components/head.pug
       main.app#app
         .content
             .bg-black
-            section.artistes
-              .artistes__container
+            section.artistes-page.mg-top
+             h1.artistes-page__title.arrow-title Les artistes
+             .artistes-page__slider
+              .artistes-page__container
                 each item in places
-                 .artistes__item
-                   .artistes__wrapper 
-                    figure.artistes__img 
+                 .artistes-page__item
+                   .artistes-page__wrapper 
+                    figure.artistes-page__img 
                       img(src=require(`../../assets/img/${item.portrait}`), alt=item.name)
                     h3=item.name
-                    a.artistes__site(href=`http://${item.site}`, target="_blank", rel="noopener noreferrer")=item.site
+                    a.artistes-page__site(href=`http://${item.site}`, target="_blank", rel="noopener noreferrer")=item.site
               .info
-                p Paroles d'Artistes
+                p Paroles d'artistes
                 .nbr  
                    .nbr-container 
                      .nbr-wrapper
                       -for(let i = 0; i<places.length; i++)
                        span.nbr-index=(i + 1)
                    .nbr-length="/"+places.length
-                p Cliquer et glisser
-
+                p.swipe Cliquer et Glisser
       include ../../components/footer.pug

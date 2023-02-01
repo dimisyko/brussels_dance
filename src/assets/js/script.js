@@ -1,10 +1,12 @@
 import '../style/style.scss';
 import loadFunction from "./utils/functionLoad.js"
-import transitionPage from './utils/transitionPage.js';
+import transitionPage from './utils/ajax.js';
 import { mediaQueries } from './utils/functions.js'
+import { loadPage } from './tlTransitions/timeLine.js';
 
-class app {
+class appGlobal {
     constructor() {
+        //this.removeSlashUrl()
         loadFunction(window.location.pathname)
         this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
@@ -12,7 +14,14 @@ class app {
             line :  this.menu.querySelector('.menu-line'),
             btnMenu : document.querySelector('.menu-btn')
         }
+        this.footer = document.querySelector('.footer')
+        this.footerFixed()
         this.eventListener()
+        this.getDate()
+    }
+    footerFixed(){
+        const heightFooter = this.footer.offsetHeight
+        app.style.marginBottom = heightFooter+"px"
     }
     toggle(){
         document.body.classList.toggle('open')
@@ -23,6 +32,15 @@ class app {
         this.offsetEl(this.findElActive)
         this.menuChild.line.style.transition = "0.4s"
         document.body.classList.remove('open')
+    }
+    getDate(){
+        const date = document.querySelector('.date')
+        date.textContent = `@ ${new Date().getFullYear()} - Tout droit réservé`
+    }
+    removeSlashUrl(){
+        if(window.location.pathname != "/"){
+            window.history.pushState({}, "", window.location.pathname.substring(0, window.location.pathname.length - 1));
+        }
     }
     currentLink(url) {
         for (let index = 0; index < this.menuChild.links.length; index++) {
@@ -36,6 +54,14 @@ class app {
         this.menuChild.line.style.transform =  "translate3d("+responsiveMenu+")"
         this.menuChild.line.style.width = el.offsetWidth + "px"
         this.menuChild.line.style.height = el.offsetHeight + "px"
+    }
+    onLoad(){
+        this.navigation()
+        loadPage()
+    }
+    onResize(){
+        this.offsetEl(this.findElActive)
+        this.footerFixed()
     }
    clk(e) {
         let el = e.target
@@ -56,12 +82,12 @@ class app {
         this.menuChild.btnMenu.addEventListener('click', this.toggle.bind(this))
         this.menu.addEventListener('mouseleave', () => this.offsetEl(this.findElActive))
         document.addEventListener('click', this.clk.bind(this))
-        window.addEventListener('load', this.navigation.bind(this))
-        window.addEventListener('resize', () => this.offsetEl(this.findElActive))
+        window.addEventListener('load', this.onLoad.bind(this))
+        window.addEventListener('resize', this.onResize.bind(this))
         window.addEventListener('popstate', () => {
             transitionPage(window.location.pathname)
             this.navigation()
         })
     }    
 }
-new app()
+new appGlobal()
