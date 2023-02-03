@@ -4,7 +4,7 @@ h1, h2, h3{
   font-weight: lighter;
   text-transform: uppercase;
   }
-a, p, time, .nbr, h4,h5,h6{
+a, p, time, .nbr, label, textarea, .contact__btn-next, .contact__btn-submit, .contact__btn-previous, .contact__form-nbr, h4,h5,h6{
   font-family: "NeueMontreal";
 }
 h1{
@@ -43,7 +43,7 @@ h4{
     font-size: 1.8vw;
   }
 }
-p, time{
+p, time, .contact__btn-next, .contact__btn-submit, .contact__btn-previous, .contact__form-nbr{
   line-height: 1.5;
   font-size: 1.15rem; 
   @include laptop{

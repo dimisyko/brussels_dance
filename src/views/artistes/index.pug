@@ -16,12 +16,11 @@ include ../../components/head.pug
                     h3=item.name
                     a.artistes-page__site(href=`http://${item.site}`, target="_blank", rel="noopener noreferrer")=item.site
               .info
-                p Paroles d'artistes
+                p Clique et glisse
                 .nbr  
                    .nbr-container 
                      .nbr-wrapper
                       -for(let i = 0; i<places.length; i++)
                        span.nbr-index=(i + 1)
                    .nbr-length="/"+places.length
-                p.swipe Cliquer et Glisser
       include ../../components/footer.pug

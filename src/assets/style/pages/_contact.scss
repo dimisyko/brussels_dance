@@ -1,0 +1,110 @@
+@use '../abstracts/mixins' as *;
+@use '../abstracts/colors' as *;
+
+.contact{
+    .form{
+        height: 95vh;
+        margin: 0 auto;
+        width: 90%;
+        @include tablet{
+            width: 65%;
+        }
+    }
+    &__title{
+        position: relative;
+        color: $colorTitle;
+        width: fit-content;
+        @include tablet{
+			@include arrowTitle;
+          }
+    }
+    &__form{
+        height: 100%;
+        padding: 2rem 0 7rem 0;
+        transition: opacity 0.5s 1.2s;
+        &.active-form{
+          opacity: 0;
+        pointer-events: none;
+        }
+        .center-input{
+            position: absolute;
+            top: 25%;
+           width: 100%;
+           opacity: 0;
+           pointer-events: none;
+           transition: opacity 0.5s;
+           &.active{
+            opacity: 1;
+            pointer-events: auto;
+            transition-delay: 0.5s;
+           }
+        }
+        label{
+            display: block;
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+        .form__message-succes{
+            color: green;
+        }
+        input{
+            padding: 1rem 0;
+        }
+        input, textarea{
+            border-bottom: 1px solid black;
+            width: 100%;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+    }
+    &__form-head{
+        display: flex;
+        justify-content: space-between;
+        .inline{
+            display: inline-block;
+        }
+    }
+    &__btn-next{
+        position: relative;
+        @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
+        &.btn-next-hide{
+            opacity: 0;
+            pointer-events: none; 
+        }
+       
+    }
+    &__btn-bottom{
+        display: flex;
+        justify-content: space-between;
+    }
+    &__btn-submit{
+        position: relative;
+        @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+        &.btn-send{
+            opacity: 1;
+            pointer-events: all; 
+        }
+    }
+     &__btn-previous{
+        position: relative;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.5s;
+        @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
+        &.btn-prev{
+            opacity: 1;
+            pointer-events: all; 
+        }
+       }
+    &__wrapper{
+        position: relative;
+        height: 95%;
+        @include tablet{
+            height: 90%;   
+        }
+    }
+}

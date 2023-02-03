@@ -6,7 +6,6 @@
 		color: $colorTitle;
         @include tablet{
 			@include arrowTitle;
-            font-size: 13vw;
           }
     }
 	&__slider {
@@ -70,11 +69,6 @@
 			left: 5%;
 			@extend %flex_between;
 			width: 90%;
-			.swipe{
-				@include hoverDevice(){
-					display: none;
-				}
-			}
 			.nbr {
 				font-family: 'NeueMontreal';
 				font-size: 1.5rem;

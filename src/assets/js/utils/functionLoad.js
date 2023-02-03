@@ -6,8 +6,8 @@ export default function loadFunction(path) {
     switch (path) {
         case '/': new home(); break;
         case '/programme': new program(); break;
-        case '/artistes' : new artistes; break;
-        case '/contact' : new contact; break;
+        case '/artistes' : new artistes(); break;
+        case '/contact' : new contact(); break;
     }
 }
 

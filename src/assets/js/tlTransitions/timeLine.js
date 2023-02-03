@@ -21,6 +21,7 @@ export function enterPage(nextApp) {
         promiseTl().then(() => {
             nextApp.style.position = "fixed"
             nextApp.style.top = "0"
+            nextApp.style.width = "100%"
             nextApp.style.zIndex = 4
             nextApp.style.transform = "translate3d(100%, 0, 0)"
             //nextApp.style.clipPath = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)"
