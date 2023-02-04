@@ -90,4 +90,8 @@ class appGlobal {
         })
     }    
 }
-new appGlobal()
+const initApp = () => {
+    new appGlobal()
+}
+
+document.addEventListener('DOMContentLoaded', initApp)

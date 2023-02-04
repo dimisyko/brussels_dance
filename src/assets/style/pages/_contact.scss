@@ -1,9 +1,11 @@
 @use '../abstracts/mixins' as *;
 @use '../abstracts/colors' as *;
-
+#black{
+    background-color: black;
+}
 .contact{
-    .form{
-        height: 95vh;
+    &__form-container{
+        height: 100vh;
         margin: 0 auto;
         width: 90%;
         @include tablet{
@@ -12,23 +14,19 @@
     }
     &__title{
         position: relative;
-        color: $colorTitle;
+        color: white;
         width: fit-content;
         @include tablet{
-			@include arrowTitle;
+			@include arrowTitle(url(../svg/arrow-white.svg));
           }
     }
     &__form{
         height: 100%;
-        padding: 2rem 0 7rem 0;
-        transition: opacity 0.5s 1.2s;
-        &.active-form{
-          opacity: 0;
-        pointer-events: none;
-        }
+        padding: 4rem 0;
+        transition: opacity 0.2s 1.2s;
         .center-input{
-            position: absolute;
-            top: 25%;
+           position: absolute;
+           top: 25%;
            width: 100%;
            opacity: 0;
            pointer-events: none;
@@ -36,27 +34,34 @@
            &.active{
             opacity: 1;
             pointer-events: auto;
-            transition-delay: 0.5s;
+            transition-delay: 0.4s;
            }
         }
         label{
-            display: block;
-            margin-bottom: 2rem;
+            color: white;
+            margin-bottom: 2.2rem;
             font-size: 1.5rem;
             font-weight: bolder;
         }
-        .form__message-succes{
-            color: green;
-        }
         input{
-            padding: 1rem 0;
+            padding: 0.8rem 0;
+        }
+        .form__error{
+            width: 50%;
         }
         input, textarea{
-            border-bottom: 1px solid black;
+            color: white;
+            border-bottom: 1px solid white;
             width: 100%;
-            font-size: 2rem;
-            margin-bottom: 2rem;
+            font-size: 1.3rem;
+            margin-bottom: 3.5rem;
+            @include phone{
+                font-size: 2rem;
+            }
         }
+    }
+    &__form-head, &__btn-next, &__btn-submit, &__btn-previous{
+        color: white;
     }
     &__form-head{
         display: flex;
@@ -67,34 +72,21 @@
     }
     &__btn-next{
         position: relative;
-        @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
-        &.btn-next-hide{
-            opacity: 0;
-            pointer-events: none; 
-        }
-       
+        @include lineAfter(1px, 0.5s, white, 1, 0, left, right);
     }
-    &__btn-bottom{
-        display: flex;
-        justify-content: space-between;
+    &__message-bottom{
+        @extend %flex_between
     }
     &__btn-submit{
         position: relative;
-        @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.5s;
-        &.btn-send{
-            opacity: 1;
-            pointer-events: all; 
-        }
+        @include lineAfter(1px, 0.5s, white, 1, 0, left, right);
     }
      &__btn-previous{
         position: relative;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.5s;
-        @include lineAfter(1px, 0.5s, black, 1, 0, left, right);
+        @include lineAfter(1px, 0.5s, white, 1, 0, left, right);
         &.btn-prev{
             opacity: 1;
             pointer-events: all; 
@@ -102,9 +94,9 @@
        }
     &__wrapper{
         position: relative;
-        height: 95%;
+        height: 100%;
         @include tablet{
-            height: 90%;   
+            height: 80%;   
         }
     }
 }

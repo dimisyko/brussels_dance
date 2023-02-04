@@ -3,11 +3,11 @@ import splitWord from "../libs/splitTxt.js"
 export default class program extends splitWord {
     constructor() {
         super({
-            el : document.querySelector('.programm-page__title'),
+            el : app.querySelector('.programm-page__title'),
             classNameParent : "split-js-parent hide",
             classNameChild : "split-js-child"
         })
-        this.programm = document.querySelectorAll('.programm-page__item')
+        this.programm = app.querySelectorAll('.programm-page__item')
         this.event()
     }
     animScroll() {

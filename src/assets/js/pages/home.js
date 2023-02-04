@@ -3,11 +3,11 @@ import splitWord from "../libs/splitTxt.js"
 export default class home extends splitWord {
     constructor() {
         super({
-            el : document.querySelector('.home__title'),
+            el : app.querySelector('.home__title'),
             classNameParent : "split-js-parent hide",
             classNameChild : "split-js-child"
         })
-        this.el = document.querySelectorAll('.partners__wrapper')
+        this.el = app.querySelectorAll('.partners__wrapper')
         this.init = {
             incre : 0,
             direction : 0

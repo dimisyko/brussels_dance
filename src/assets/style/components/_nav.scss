@@ -1,11 +1,12 @@
 @use '../abstracts/mixins' as *;
 @use '../abstracts/colors' as *;
 .menu {
-	padding: 0.7rem 0;
+	padding: 0.2rem 0 0.5rem 0;
 	position: fixed;
     top: 0;
     width: 100%;
 	backdrop-filter: blur(7px);
+	background-color: $colorBg;
 	z-index: 5;
 	&__container {
 		@extend %flex_between;
@@ -42,7 +43,7 @@
 		}
 	}
 	&__logo-wrapper {
-		width: 140px;
+		width: 130px;
 	}
 	&__nav {
 		@media (max-width: 992px) {

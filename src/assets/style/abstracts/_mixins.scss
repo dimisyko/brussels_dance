@@ -8,9 +8,9 @@
   justify-content: space-between;
   align-items: center;
 }
-@mixin arrowTitle(){
+@mixin arrowTitle($svg){
   &::after{
-    @include after(url(../img/arrow.svg), 0, 100%);
+    @include after($svg, 0, 100%);
     transform: translateX(150%);
     width: 50px;
 }

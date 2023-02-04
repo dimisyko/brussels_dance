@@ -2,6 +2,10 @@
  ::selection{
     background-color: #fff5db;
   }
+  ::placeholder {
+    color: white;
+    opacity: 0.6;
+  }
     html, body, nav, header, footer, span,
     h1, h2, h3, p,
     a, img,
@@ -48,7 +52,7 @@
       }
     }
     body{
-      background-color:rgb(254, 248, 230);
+      background-color:#ff7f01;
       overflow-y: scroll;
       &.open {
         overflow-y: hidden;
@@ -97,7 +101,7 @@
       transform: translate(0, 100%);
       transition: transform 0.7s ease;
     }
-    img, picture, span, svg, a {
+    img, picture, span, label, svg, a {
       display: block
     }
     img{

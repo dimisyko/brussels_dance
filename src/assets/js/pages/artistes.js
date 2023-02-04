@@ -2,14 +2,14 @@ import splitWord from "../libs/splitTxt.js"
 export default class places extends splitWord{
     constructor(){
         super({
-            el : document.querySelector('.artistes-page__title'),
+            el : app.querySelector('.artistes-page__title'),
             classNameParent : "split-js-parent hide",
             classNameChild : "split-js-child"
         })
-        this.el = document.querySelector('.artistes-page__container')
+        this.el = app.querySelector('.artistes-page__container')
         this.items = this.el.querySelectorAll('.artistes-page__item')
         this.child = this.el.querySelectorAll('.artistes-page__wrapper')
-        this.nbr = document.querySelector('.nbr-wrapper')
+        this.nbr = app.querySelector('.nbr-wrapper')
         this.init = {
             index : 0,
             increVW : 0,

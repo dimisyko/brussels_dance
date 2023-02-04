@@ -71,7 +71,7 @@
         position: relative;
         margin-bottom: 1.8rem;
           @include tablet{
-            @include arrowTitle;
+            @include arrowTitle(url(../svg/arrow.svg));
             font-size: 13vw;
           }
     }
