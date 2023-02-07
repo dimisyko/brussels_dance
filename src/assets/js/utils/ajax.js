@@ -3,7 +3,7 @@ import { leavePage, enterPage } from "../tlTransitions/timeLine.js"
 
 export default function transitionPage(url) {
 		leavePage()
-		const content = document.querySelector('.content')
+		const content = app.querySelector('.content')
 		document.body.style.overflow = "hidden"
 		document.body.style.pointerEvents = "none"
 		let xml = new XMLHttpRequest()

@@ -8,6 +8,15 @@ function promiseTl(time) {
         }, time)
     })
 }
+function transform(el, start, end, ease){
+    (function run(){
+        if(start > end){
+            start-=ease
+            el.style.transform ="translate3d(0,"+start.toFixed(1)+"px, 0)"
+            requestAnimationFrame(run)
+        }
+    })()
+}
 function mediaQueries(size){
     return window.matchMedia(`(${size})`)
  }
@@ -28,4 +37,4 @@ function offsetEl(el){
     }
 }
 
-export{ ease, offsetEl, mediaQueries, animationFixe, promiseTl }
+export{ ease, offsetEl, mediaQueries, animationFixe, promiseTl, transform }
