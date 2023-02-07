@@ -3,9 +3,8 @@ import { promiseTl } from "../utils/functions.js"
 export function loadPage(){
     const titleChild = document.querySelectorAll('.split-js-child')
     titleChild.forEach((el, i) =>{
-        setTimeout(() => {
+            el.style.transition = "transform 0.7s "+(i * 0.035)+"s ease"
             el.style.transform = "translate(0%, 0%)"
-        }, i * 40);
     })
 }
 
