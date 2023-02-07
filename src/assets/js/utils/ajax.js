@@ -4,8 +4,9 @@ import { leavePage, enterPage } from "../tlTransitions/timeLine.js"
 export default function transitionPage(url) {
 		leavePage()
 		const content = app.querySelector('.content')
-		document.body.style.overflow = "hidden"
-		document.body.style.pointerEvents = "none"
+		document.documentElement.style.overflow = "hidden"
+		document.documentElement.style.pointerEvents = "none"
+		document.documentElement.style.cursor = "wait"
 		let xml = new XMLHttpRequest()
 		xml.addEventListener('load', function () {
 			if (this.status === 200 && this.readyState === 4) {
@@ -16,7 +17,7 @@ export default function transitionPage(url) {
 				})
 				enterPage(dom.querySelector('.content')).then(() =>{
 					content.remove()
-					document.body.removeAttribute('style')
+					document.documentElement.removeAttribute('style')
 				})
 				app.appendChild(dom.querySelector('.content'))
 				document.title = dom.title	
