@@ -103,9 +103,6 @@
     img, picture, span, label, svg, a {
       display: block
     }
-    img{
-      pointer-events: none;
-    }
     .shrink{
       flex-shrink: 0;
     }

@@ -6,7 +6,6 @@ import { loadPage } from './tlTransitions/timeLine.js';
 
 class appGlobal {
     constructor() {
-        //this.removeSlashUrl()
         loadFunction(window.location.pathname)
         this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
@@ -28,7 +27,7 @@ class appGlobal {
     }
     navigation(){
         this.currentLink(window.location.pathname)
-        this.findElActive = this.menuChild.links.find((active) => active.classList.contains("active-link"))
+        this.findElActive = this.menuChild.links.find((active) => active.hasAttribute('aria-current', 'active'))
         this.offsetEl(this.findElActive)
         this.menuChild.line.style.transition = "0.4s"
         document.body.classList.remove('open')
@@ -37,15 +36,10 @@ class appGlobal {
         const date = document.querySelector('.date')
         date.textContent = `@ ${new Date().getFullYear()} - Tout droit réservé`
     }
-    removeSlashUrl(){
-        if(window.location.pathname != "/"){
-            window.history.pushState({}, "", window.location.pathname.substring(0, window.location.pathname.length - 1));
-        }
-    }
     currentLink(url) {
         for (let index = 0; index < this.menuChild.links.length; index++) {
             const href = this.menuChild.links[index].getAttribute('href').replace(window.location.origin, "")
-            url == href ? this.menuChild.links[index].classList.add('active-link') : this.menuChild.links[index].classList.remove('active-link')
+            url == href ? this.menuChild.links[index].setAttribute('aria-current', 'active') : this.menuChild.links[index].removeAttribute('aria-current')
             this.menuChild.links[index].addEventListener('mouseover', () => this.offsetEl(this.menuChild.links[index]))
         }
     }

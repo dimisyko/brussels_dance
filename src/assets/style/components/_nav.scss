@@ -115,7 +115,7 @@
 		@include laptop {
 			font-size: 1.25vw;
 		}
-		&.active-link {
+		&[aria-current] {
 			color: $colorTitle;
 			pointer-events: none;
 		}
