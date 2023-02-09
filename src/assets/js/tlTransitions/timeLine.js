@@ -23,11 +23,9 @@ export function enterPage(nextApp) {
             nextApp.style.width = "100%"
             nextApp.style.zIndex = 4
             nextApp.style.transform = "translate3d(100%, 0, 0)"
-            //nextApp.style.clipPath = "polygon(100% 0, 100% 0, 100% 100%, 100% 100%)"
             return promiseTl(400)
         }).then(() => {
             nextApp.style.transform = "translate3d(0%, 0, 0)"
-            //nextApp.style.clipPath = "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
             nextApp.style.transition = "1.2s cubic-bezier(.5,-0.01,.35,1)"
             loadPage()
             return promiseTl(1200)

@@ -6,6 +6,7 @@ import { loadPage } from './tlTransitions/timeLine.js';
 
 class appGlobal {
     constructor() {
+        //this.removeSlashUrl()
         loadFunction(window.location.pathname)
         this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
@@ -36,6 +37,11 @@ class appGlobal {
         const date = document.querySelector('.date')
         date.textContent = `@ ${new Date().getFullYear()} - Tout droit réservé`
     }
+    removeSlashUrl(){
+        if(window.location.pathname != "/"){
+            window.history.pushState({}, "", window.location.pathname.substring(0, window.location.pathname.length - 1));
+        }
+    }
     currentLink(url) {
         for (let index = 0; index < this.menuChild.links.length; index++) {
             const href = this.menuChild.links[index].getAttribute('href').replace(window.location.origin, "")
@@ -65,12 +71,14 @@ class appGlobal {
         
         if(!el || el.getAttribute('href').indexOf("mailto:") !== -1 || el.getAttribute('target')) return
 
-        if (el) {
+        if(el.getAttribute('href') === window.location.pathname){
+            e.preventDefault()
+            return
+        }
             e.preventDefault()
             window.history.pushState({}, '', el.getAttribute('href'))
             transitionPage(el.getAttribute('href')) 
             this.navigation()
-        }
     }
     eventListener() {
         this.menuChild.btnMenu.addEventListener('click', this.toggle.bind(this))
