@@ -54,6 +54,18 @@
     body{
       background-color:#ff7f01;
       overflow-y: scroll;
+      &.openVideo{
+        overflow-y: hidden;
+        header{
+          transform: translateY(-100%);
+        }
+        .about__btn-play{
+          opacity: 0;
+        }
+        .about__bg{
+          transform: translateY(0%);
+        }
+    }
       &.open {
         overflow-y: hidden;
         .menu__container {
@@ -106,11 +118,10 @@
     .shrink{
       flex-shrink: 0;
     }
-    img, svg {
+    img, svg, video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      pointer-events: none;
     }
   .hide{
     overflow: hidden;

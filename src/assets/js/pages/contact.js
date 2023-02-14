@@ -82,7 +82,7 @@ export default class contact extends splitWord {
         }
     }
     event() {
-        this.formChild.btn.forEach((el) => el.addEventListener('click', () => el.dataset.btn == "next" ? this.checkInputValue() : this.prevInput()))
+        this.formChild.btn.forEach((el) => el.addEventListener('click', el.dataset.btn == "next" ? this.checkInputValue.bind(this) : this.prevInput.bind(this)))
         this.form.addEventListener('submit', this.submitForm.bind(this))
     }
 }

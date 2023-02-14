@@ -35,6 +35,55 @@
     }
 }
 .about{
+    &__left{
+        margin-bottom: 3rem;
+        @include tablet{
+            width: 50%;
+            margin-bottom: 0
+        }
+    }
+    &__btn-play{
+        @include centerAbs(absolute, 50%, 50%, -50%, -50%);
+        width: 4.5rem;
+        height: 4.5rem;
+        transition: opacity 0.7s;
+        background-color: black;
+        border-radius: 50vw;
+        svg{
+            @include centerAbs(absolute, 50%, 50%, -50%, -50%);
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+    &__wrapper-video{
+        position: relative;
+        width: 80%;
+        height: 70vw;
+        border-radius: 15px;
+        z-index: 1;
+        cursor: pointer;
+        @include tablet{
+            width: 90%;
+            height: 26vw;
+            object-fit: cover;
+        }
+       }
+       &__btn-close{
+        position: absolute;
+        top: 10%;
+        right: 8vw;
+        color: white;
+        @include lineAfter(1px, 0.5s, white, 1, 0, left, right);
+       }
+       &__bg{
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        transform: translateY(-100%);
+        background-color: $colorTitle
+       }
     &__edition{
         @include tablet{
             display: flex;
@@ -42,11 +91,8 @@
         }
     }
     &__title{
-        color: $colorTitle;
         margin-bottom: 2rem;
-        @include tablet{
-            width: 50%;
-        }
+        color: $colorTitle;
     }
    &__container-paragraph{
     @include tablet{
