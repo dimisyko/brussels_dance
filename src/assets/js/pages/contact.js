@@ -33,7 +33,7 @@ export default class contact extends splitWord {
     }
     succes() {
         this.message("")
-        this.nextInput()
+        this.navigate("next")
     }
     checkRegex(value) {
         const regex = /^(([^<>()[\]\\.,;:#$&!\s@"]+(\.[^<>()[\]\\.,;:#$&!\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -42,22 +42,10 @@ export default class contact extends splitWord {
     incrementation(incre, index) {
         incre, this.formChild.nbrIndex.textContent = "0" + (index + 1) + "/"
     }
-    prevInput() {
+    navigate(direction){
         this.formChild.containerInput[this.index].classList.remove('active')
-        if (this.index > 0) {
-            this.incrementation(this.index--, this.index)
-            if (this.index == 0) {
-                this.formChild.btnPrev.classList.remove('btn-prev')
-            }
-        }
-        this.formChild.containerInput[this.index].classList.add('active')
-    }
-    nextInput() {
-        this.formChild.containerInput[this.index].classList.remove('active')
-        if (this.index < this.formChild.containerInput.length - 1) {
-            this.incrementation(this.index++, this.index)
-            this.formChild.btnPrev.classList.add('btn-prev')
-        }
+        direction == "next" && this.index < this.formChild.containerInput.length - 1 ? (this.incrementation(this.index++, this.index), this.formChild.btnPrev.classList.add('btn-prev')) : this.incrementation(this.index--, this.index)
+        if(this.index == 0) this.formChild.btnPrev.classList.remove('btn-prev')
         this.formChild.containerInput[this.index].classList.add('active')
     }
     checkInputValue() {
@@ -82,7 +70,7 @@ export default class contact extends splitWord {
         }
     }
     event() {
-        this.formChild.btn.forEach((el) => el.addEventListener('click', el.dataset.btn == "next" ? this.checkInputValue.bind(this) : this.prevInput.bind(this)))
+        this.formChild.btn.forEach((el) => el.addEventListener('click', () => el.dataset.btn == "next" ? this.checkInputValue() : this.navigate("prev")))
         this.form.addEventListener('submit', this.submitForm.bind(this))
     }
 }
