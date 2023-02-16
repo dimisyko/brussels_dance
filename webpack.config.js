@@ -12,7 +12,6 @@ const mapFolders = folders.map(filename => {
   return new HtmlWebpackPlugin({
     template: path.resolve(__dirname, `./src/views/${filename}.pug`),
       filename: `${filename}.html`,
-      //inject: 'body',
       meta : {
         'og:title': { property: 'og:title', content: 'Brussels Dance' },
         'og:description': { property: 'og:description', content: "Refonte de l'identité graphique et du site web du festival Brussels Dance" },
@@ -26,21 +25,11 @@ const mapFolders = folders.map(filename => {
       }
   })
 })
-
 module.exports = {
-mode : "development",
 entry: './src/assets/js/script.js',
 output: {
   filename: 'assets/js/script.js',
-  path: path.resolve(__dirname, 'dist'),
-  //publicPath: ''
-},
-devServer: {
-  static: {
-    directory: path.join(__dirname, 'dist'),
-  },
-  compress: true,
-  port: 3000,
+  path: path.resolve(__dirname, 'dist')
 },
 
   module: {
