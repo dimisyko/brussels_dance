@@ -6,7 +6,6 @@ import { loadPage } from './tlTransitions/timeLine.js';
 
 class appGlobal {
     constructor() {
-        //this.removeSlashUrl()
         loadFunction()
         this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
@@ -36,11 +35,6 @@ class appGlobal {
     getDate(){
         const date = document.querySelector('.date')
         date.textContent = `@ ${new Date().getFullYear()} - Tout droit réservé`
-    }
-    removeSlashUrl(){
-        if(window.location.pathname != "/"){
-            window.history.pushState({}, "", window.location.pathname.substring(0, window.location.pathname.length - 1));
-        }
     }
     currentLink(url) {
         for (let index = 0; index < this.menuChild.links.length; index++) {
