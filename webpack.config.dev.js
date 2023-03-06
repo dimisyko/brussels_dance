@@ -1,6 +1,7 @@
 const { merge } = require("webpack-merge");
 const config = require("./webpack.config");
 const path = require('path');
+require('dotenv').config()
 
 module.exports = merge(config, {
   mode: "development",
@@ -10,7 +11,7 @@ module.exports = merge(config, {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 3000,
+    port: process.env.LOCAL_PORT,
   },
  
 });

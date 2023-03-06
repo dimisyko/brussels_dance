@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 const folders = [
   'index',
@@ -96,6 +97,11 @@ output: {
       plugins: [
         new MiniCssExtractPlugin({
           filename: 'assets/style/style.css'
+      }),
+      new CopyPlugin({
+        patterns: [
+          { from: "./src/assets/favicon", to: "assets/favicon" },
+        ],
       }),
       ].concat(mapFolders)
 };

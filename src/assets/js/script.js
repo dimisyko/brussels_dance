@@ -7,7 +7,7 @@ import { loadPage } from './tlTransitions/timeLine.js';
 class appGlobal {
     constructor() {
         //this.removeSlashUrl()
-        loadFunction(window.location.pathname)
+        loadFunction()
         this.menu = document.querySelector('.menu__wrapper')
         this.menuChild = {
             links : [...this.menu.querySelectorAll('.menu__link')],

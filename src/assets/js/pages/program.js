@@ -16,6 +16,7 @@ export default class program extends splitWord {
             this.programm[index].style.opacity = 1 - fcnScroll
             this.programm[index].style.transform = `scale3d(${1 - (fcnScroll * 0.6)}, ${1 - (fcnScroll * 0.6)}, 1)`
         }
+       
        mediaQueries("max-width:992px").matches ? cancelAnimationFrame(this.animScroll.bind(this)) : requestAnimationFrame(this.animScroll.bind(this))
     }
     event(){

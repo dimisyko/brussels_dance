@@ -21,7 +21,7 @@ export default function transitionPage(url) {
 				})
 				app.appendChild(dom.querySelector('.content'))
 				document.title = dom.title	
-				loadFunction(window.location.pathname)
+				loadFunction()
 			} else {
 				window.location.reload()
 			}
