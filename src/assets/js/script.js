@@ -2,7 +2,7 @@ import '../style/style.scss';
 import loadFunction from "./utils/functionLoad.js"
 import transitionPage from './utils/ajax.js';
 import { mediaQueries } from './utils/functions.js'
-import { loadPage } from './tlTransitions/timeLine.js';
+import preloader from './tlTransitions/preloader.js';
 
 class appGlobal {
     constructor() {
@@ -17,6 +17,7 @@ class appGlobal {
         this.footerFixed()
         this.eventListener()
         this.getDate()
+        this.onLoad()
     }
     footerFixed(){
         const heightFooter = this.footer.offsetHeight
@@ -50,8 +51,8 @@ class appGlobal {
         this.menuChild.line.style.height = el.offsetHeight + "px"
     }
     onLoad(){
+        new preloader()
         this.navigation()
-        loadPage()
     }
     onResize(){
         this.offsetEl(this.findElActive)
@@ -78,7 +79,6 @@ class appGlobal {
         this.menuChild.btnMenu.addEventListener('click', this.toggle.bind(this))
         this.menu.addEventListener('mouseleave', () => this.offsetEl(this.findElActive))
         document.addEventListener('click', this.clk.bind(this))
-        window.addEventListener('load', this.onLoad.bind(this))
         window.addEventListener('resize', this.onResize.bind(this))
         window.addEventListener('popstate', () => {
             transitionPage(window.location.pathname)
@@ -86,8 +86,4 @@ class appGlobal {
         })
     }    
 }
-const initApp = () => {
-    new appGlobal()
-}
-
-document.addEventListener('DOMContentLoaded', initApp)
+new appGlobal()

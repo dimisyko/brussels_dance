@@ -16,7 +16,7 @@ export function leavePage() {
 }
 
 export function enterPage(nextApp) {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
         promiseTl().then(() => {
             nextApp.style.position = "fixed"
             nextApp.style.top = "0"

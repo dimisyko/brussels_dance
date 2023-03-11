@@ -92,6 +92,20 @@
         }
       }
     }
+    .preloader{
+      position: fixed;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      background-color: #ff7f01;
+      z-index: 6;
+      transition: transform 1.2s cubic-bezier(.73,0,.25,1);
+      &__count{
+        color: white;
+        @extend %centerFlex;
+        height: 100%;
+      }
+    }
     ul, li {
       list-style: none;
     }

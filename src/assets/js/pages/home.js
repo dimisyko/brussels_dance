@@ -67,11 +67,9 @@ export default class home extends splitWord {
         this.init.direction = scrollY
     }
     raf(){
-        if(this.init.incre < -this.el[0].getBoundingClientRect().width){
-            this.init.incre-= -this.el[0].getBoundingClientRect().width
-        }
-        if(this.init.incre > 0){
-            this.init.incre-= this.el[0].getBoundingClientRect().width  
+        this.marquee = this.init.incre % this.el[0].getBoundingClientRect().width
+        if(this.marquee < 0){
+            this.marquee = this.marquee + this.el[0].getBoundingClientRect().width
         }
         this.moveMarquee()
         this.easing()
@@ -82,8 +80,7 @@ export default class home extends splitWord {
     }
     moveMarquee(){
         mediaQueries('max-width:992px').matches ? this.directionMarquee(1) : this.directionMarquee(2)
-        this.el[0].style.transform = "translate3d("+this.init.incre+"px, 0, 0)"
-        this.el[1].style.transform = "translate3d("+this.init.incre+"px, 0, 0)"
+        this.el[0].style.transform = this.el[1].style.transform = "translate3d("+(-this.marquee)+"px, 0, 0)"
     }
     event(){
         this.raf()
