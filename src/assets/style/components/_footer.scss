@@ -2,10 +2,6 @@
 @use '../abstracts/colors' as *;
 
 .footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: -1;
     background-color: $colorTitle;
         &__item{
             margin: 2.2rem 0;

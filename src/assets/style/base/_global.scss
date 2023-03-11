@@ -19,10 +19,6 @@
       background-color:rgb(254, 248, 230);
       background-image: url(../img/bg.png);
     }
-    .link{
-      font-size: 1.2rem;
-      color: white;
-    }
     .bg-black{
       position: fixed;
       top: 0;
@@ -92,20 +88,6 @@
         }
       }
     }
-    .preloader{
-      position: fixed;
-      top: 0;
-      height: 100vh;
-      width: 100%;
-      background-color: #ff7f01;
-      z-index: 6;
-      transition: transform 1.2s cubic-bezier(.73,0,.25,1);
-      &__count{
-        color: white;
-        @extend %centerFlex;
-        height: 100%;
-      }
-    }
     ul, li {
       list-style: none;
     }
@@ -124,7 +106,7 @@
       display: inline-block;
     }
     .split-js-child{
-      transform: translate(0, 100%);
+      transform: translate(0, 105%);
     }
     img, picture, span, label, svg, a {
       display: block

@@ -156,11 +156,11 @@
     &__item{
         margin: 3rem 0;
         h2{
+            margin-bottom: 1.2rem;
             color: $colorTitle;
         }
         a{
             position: relative;
-            font-size: 1.2rem;
             color: black;
             width: fit-content;
             @include lineAfter(1px, 0.5s, black, 1, 0, left, right);

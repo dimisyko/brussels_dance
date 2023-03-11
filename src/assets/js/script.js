@@ -14,14 +14,9 @@ class appGlobal {
             btnMenu : document.querySelector('.menu-btn')
         }
         this.footer = document.querySelector('.footer')
-        this.footerFixed()
-        this.eventListener()
         this.getDate()
         this.onLoad()
-    }
-    footerFixed(){
-        const heightFooter = this.footer.offsetHeight
-        app.style.marginBottom = heightFooter+"px"
+        this.eventListener()
     }
     toggle(){
         document.body.classList.toggle('open')
@@ -56,7 +51,6 @@ class appGlobal {
     }
     onResize(){
         this.offsetEl(this.findElActive)
-        this.footerFixed()
     }
    clk(e) {
         let el = e.target

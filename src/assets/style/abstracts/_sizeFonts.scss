@@ -43,10 +43,28 @@ h4{
     font-size: 1.8vw;
   }
 }
+a{
+  @include tablet{
+    font-size: 1rem;
+  }
+  @include laptop {
+    font-size: 1.15vw;
+  }
+}
 p, time, .contact__btn-next, .contact__btn-submit, .contact__btn-previous, .contact__form-nbr, .about__btn-close{
   line-height: 1.5;
   font-size: 1.1rem; 
   @include laptop{
     font-size: 1.3vw;
+  }
+}
+.link{
+  font-size: 1.1rem;
+  color: white;
+  @include tablet{
+    font-size: 1rem;
+  }
+  @include laptop {
+    font-size: 1.2vw;
   }
 }

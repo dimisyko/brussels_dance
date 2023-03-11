@@ -1,35 +1,20 @@
 import { loadPage } from "./timeLine.js";
+import { promiseTl } from "../utils/functions.js";
 
 export default class preloader {
     constructor() {
-        this.imgs = document.getElementsByTagName('img')
-        this.preloader = document.querySelector('.preloader')
-        this.index = 0;
-        this.loadImg()
+        this.preloader()
+        this.paramsAnimation = "position : fixed; width: 100%; clip-path : polygon(0 0%, 100% 0%, 100% 100%, 0 100%); transform-origin: top; overflow-y: hidden;"
     }
-    fade() {
-            this.preloader.style = "transform : translate3d(0, -100%, 0); pointer-events : none;"
-            setTimeout(loadPage, 300);
+   async preloader(){
+        document.body.style = "position : fixed; width: 100%; clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%); transform: scale(0.3); transform-origin: top;"
+       await promiseTl(300)
+            document.body.style = this.paramsAnimation+" transform: scale(0.3); transition : 1.5s ease;"
+        await promiseTl(1500)
+            document.body.style = this.paramsAnimation+" transform : scale(1); transition : 1.4s cubic-bezier(.73,0,.25,1);"
+        await promiseTl(400)
+            loadPage()
+        await promiseTl(1200)
+            document.body.removeAttribute('style')
     }
-    loadImg() {
-        if (this.imgs.length === 0) {
-            setTimeout(() => {
-                this.preloader.children[0].textContent = "100%"
-                this.fade()
-            }, 550);
-        }
-        for (const iterator of this.imgs) {
-            const img = new Image()
-            img.src = iterator.getAttribute('src')
-            img.addEventListener('load', () => {
-                this.index++
-                const percent = Math.round(this.index / this.imgs.length * 100)
-                this.preloader.children[0].textContent = percent + '%'
-                if (this.index === this.imgs.length) {
-                    setTimeout(this.fade.bind(this), 550);
-                }
-            })
-        }
-    }
-
 }
