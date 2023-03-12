@@ -44,7 +44,6 @@
   }
   ]
 include ../components/head.pug
-      main.app#app
         .content
           .bg-black
           section.home
@@ -94,4 +93,4 @@ include ../components/head.pug
                    li.partners__list
                      figure.partners__item
                        img(src=require(`../assets/img/${item.img}`), alt=item.alt)
-      include ../components/footer.pug
+include ../components/footer.pug

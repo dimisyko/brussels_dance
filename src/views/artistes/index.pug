@@ -1,7 +1,6 @@
 -const title = "Artistes"
 -const places = [{name :"Ayelen Parolin", portrait : "portrait1.webp", site : "www.ayelenparolin.be"}, {name :"Vera Tussing", portrait : "portrait2.webp", site : "www.veratussing.com"}, {name :"Thierry Smits", portrait : "portrait3.webp", site : "www.thor.be"}, {name :"Julien Carlier", portrait : "portrait4.webp", site : "www.juliencarlier.be"}]
 include ../../components/head.pug
-      main.app#app
         .content
             .bg-black
             section.artistes-page.mg-top
@@ -23,4 +22,4 @@ include ../../components/head.pug
                       -for(let i = 0; i<places.length; i++)
                        span.nbr-index=(i + 1)
                    .nbr-length="/"+places.length
-      include ../../components/footer.pug
+include ../../components/footer.pug
