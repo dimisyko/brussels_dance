@@ -6,7 +6,7 @@ export default function loadFunction() {
     const path = new Map()
     
     path.set('/', home)
-    path.set('/program', program)
+    path.set('/programme', program)
     path.set('/artistes', artistes)
     path.set('/contact', contact)
     new (path.get(window.location.pathname))
